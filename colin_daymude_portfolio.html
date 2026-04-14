@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colin Daymude | Product Marketing & Customer Engagement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg2: #111111;
+    --bg3: #181818;
+    --accent: #C8002A;
+    --accent-light: #E8183E;
+    --gold: #B8985A;
+    --text: #F2EDE4;
+    --text-muted: #9A9088;
+    --text-dim: #5A5450;
+    --border: rgba(200,0,42,0.18);
+    --border-subtle: rgba(242,237,228,0.08);
+    --radius: 4px;
+    --radius-lg: 8px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 60px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border-subtle);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent-light); }
+  .nav-cta {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text); text-decoration: none;
+    border: 0.5px solid var(--accent); padding: 7px 18px;
+    border-radius: var(--radius); transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: flex-start; justify-content: flex-end;
+    padding: 0 5vw 8vh;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0A0A0A 0%, #160008 50%, #0A0A0A 100%);
+  }
+  .hero-line {
+    position: absolute; top: 0; bottom: 0;
+    width: 0.5px; background: var(--border);
+  }
+  .hero-line:nth-child(1) { left: 20%; }
+  .hero-line:nth-child(2) { left: 40%; }
+  .hero-line:nth-child(3) { left: 60%; }
+  .hero-line:nth-child(4) { left: 80%; }
+  .hero-content { position: relative; z-index: 2; max-width: 860px; }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
+  }
+  h1.hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 8vw, 96px);
+    font-weight: 300; line-height: 0.95;
+    letter-spacing: -0.02em; color: var(--text);
+    margin-bottom: 2rem;
+  }
+  h1.hero-name span { color: var(--accent); font-style: italic; }
+  .hero-tagline {
+    font-size: 17px; font-weight: 300; color: var(--text-muted);
+    max-width: 560px; line-height: 1.6; margin-bottom: 3rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    padding: 12px 28px; border-radius: var(--radius);
+    transition: all 0.2s; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--text); border: 0.5px solid rgba(242,237,228,0.3); }
+  .btn-outline:hover { border-color: var(--text); transform: translateY(-1px); }
+  .btn-li { background: #0A66C2; color: #fff; }
+  .btn-li:hover { background: #0958A8; transform: translateY(-1px); }
+  .hero-stats {
+    position: absolute; bottom: 8vh; right: 5vw; z-index: 2;
+    display: flex; flex-direction: column; gap: 1.5rem;
+    text-align: right;
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300; color: var(--text);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-dim);
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 5vw; }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .section-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
+  h2.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300; line-height: 1.1;
+    letter-spacing: -0.01em; margin-bottom: 1rem;
+  }
+  .section-intro {
+    font-size: 16px; font-weight: 300; color: var(--text-muted);
+    max-width: 640px; margin-bottom: 4rem; line-height: 1.7;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 0.5px; background: var(--border-subtle);
+    margin: 0 5vw;
+  }
+
+  /* CATEGORY CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--border-subtle);
+    border: 0.5px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .card {
+    background: var(--bg2);
+    padding: 2.5rem;
+    transition: background 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { background: var(--bg3); }
+  .card-icon {
+    font-size: 24px; margin-bottom: 1.5rem;
+    width: 44px; height: 44px;
+    background: rgba(200,0,42,0.1);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+  .card-body {
+    font-size: 14px; font-weight: 300; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 1.5rem; flex: 1;
+  }
+  .card-results { margin-bottom: 1.5rem; }
+  .result-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; font-weight: 400; color: var(--text);
+    padding: 6px 0; border-bottom: 0.5px solid var(--border-subtle);
+  }
+  .result-item:last-child { border-bottom: none; }
+  .result-item::before {
+    content: '→'; color: var(--accent); font-size: 12px;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .card-resources { margin-top: auto; }
+  .resource-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent);
+    text-decoration: none; transition: color 0.2s;
+    margin-right: 1rem; margin-top: 0.5rem;
+  }
+  .resource-link:hover { color: var(--accent-light); }
+  .resource-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 3px 8px;
+    border-radius: 2px; margin-right: 6px; margin-top: 4px;
+  }
+  .badge-pdf { background: rgba(200,0,42,0.15); color: #E8183E; border: 0.5px solid rgba(200,0,42,0.3); }
+  .badge-ppt { background: rgba(184,152,90,0.15); color: #C8A86A; border: 0.5px solid rgba(184,152,90,0.3); }
+  .badge-video { background: rgba(90,140,200,0.15); color: #7AACF0; border: 0.5px solid rgba(90,140,200,0.3); }
+  .badge-link { background: rgba(90,200,140,0.12); color: #7ADCB4; border: 0.5px solid rgba(90,200,140,0.3); }
+  .badge-enable { background: rgba(184,152,90,0.15); color: #C8A86A; border: 0.5px solid rgba(184,152,90,0.35); }
+
+  /* WEBINARS SECTION */
+  #webinars { background: var(--bg2); }
+  .webinar-list { display: flex; flex-direction: column; gap: 1px; background: var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+  .webinar-item {
+    display: flex; align-items: center; gap: 2rem;
+    padding: 1.5rem 2rem; background: var(--bg2);
+    text-decoration: none; color: var(--text);
+    transition: background 0.2s;
+    border-radius: 0;
+  }
+  .webinar-item:hover { background: var(--bg3); }
+  .webinar-date {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent);
+    min-width: 80px;
+  }
+  .webinar-title {
+    font-size: 15px; font-weight: 400; flex: 1;
+  }
+  .webinar-org {
+    font-size: 12px; color: var(--text-muted); min-width: 140px; text-align: right;
+  }
+  .webinar-arrow {
+    color: var(--text-dim); font-size: 16px; transition: color 0.2s;
+  }
+  .webinar-item:hover .webinar-arrow { color: var(--accent); }
+
+  /* MATERIALS SECTION */
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .material-card {
+    background: var(--bg2);
+    padding: 2rem 1.5rem;
+    display: flex; flex-direction: column; gap: 0.75rem;
+    text-decoration: none; color: var(--text);
+    transition: background 0.2s;
+  }
+  .material-card:hover { background: var(--bg3); }
+  .material-type {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .material-name {
+    font-size: 14px; font-weight: 400; line-height: 1.4;
+  }
+  .material-desc {
+    font-size: 12px; color: var(--text-muted); line-height: 1.5;
+  }
+  .material-cta {
+    margin-top: auto;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent);
+  }
+
+  /* LOYALTY SECTION */
+  #loyalty { background: var(--bg); }
+  .loyalty-framework {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start;
+  }
+  .loyalty-pillar { }
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 300; color: var(--border);
+    line-height: 1; margin-bottom: -0.3em;
+  }
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 400; color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+  .pillar-body {
+    font-size: 14px; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 1.5rem;
+  }
+  .pillar-metric {
+    display: flex; gap: 2rem;
+  }
+  .metric-box { }
+  .metric-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300; color: var(--text);
+  }
+  .metric-val span { color: var(--accent); }
+  .metric-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 60px 5vw 40px;
+    border-top: 0.5px solid var(--border-subtle);
+    display: flex; align-items: flex-start; justify-content: space-between;
+    flex-wrap: wrap; gap: 2rem;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .footer-contact { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+  .footer-links { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; }
+  .footer-link {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-link:hover { color: var(--accent); }
+  .footer-bottom {
+    margin-top: 3rem; padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border-subtle);
+    text-align: center;
+    font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-stats { display: none; }
+    .loyalty-framework { grid-template-columns: 1fr; gap: 2rem; }
+    .footer { flex-direction: column; }
+    .footer-links { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="nav-logo" href="#">Colin Daymude</a>
+  <ul class="nav-links">
+    <li><a href="#product-marketing">Product Marketing</a></li>
+    <li><a href="#customer-engagement">Customer Engagement</a></li>
+    <li><a href="#loyalty">Loyalty Strategy</a></li>
+    <li><a href="#webinars">Webinars</a></li>
+    <li><a href="#materials">Materials</a></li>
+  </ul>
+  <!-- UPDATE: replace # with your actual LinkedIn URL -->
+  <a class="nav-cta" href="https://www.linkedin.com/in/colindaymude/" target="_blank">LinkedIn ↗</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-line"></div>
+    <div class="hero-line"></div>
+    <div class="hero-line"></div>
+    <div class="hero-line"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Full Stack Marketer</div>
+    <h1 class="hero-name">Colin<br><span>Daymude</span></h1>
+    <p class="hero-tagline">Product Marketing &amp; Customer Engagement leader with a track record of turning messaging into pipeline, and customers into advocates.</p>
+    <div class="hero-actions">
+      <!-- UPDATE: replace # with your LinkedIn profile URL -->
+      <a class="btn btn-li" href="https://www.linkedin.com/in/colindaymude/" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Connect on LinkedIn
+      </a>
+      <!-- UPDATE: replace # with path to your resume PDF if hosting it -->
+      <a class="btn btn-outline" href="Colin_Daymude_Resume_PMM_2026_docx.pdf" download>Download Resume ↓</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">$2.5<span>M</span></div>
+      <div class="stat-label">Pipeline Owned</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">90<span>%+</span></div>
+      <div class="stat-label">Retention Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">40<span>%+</span></div>
+      <div class="stat-label">Newsletter Open Rate</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRODUCT MARKETING -->
+<section id="product-marketing">
+  <div class="section-label reveal">Product Marketing</div>
+  <h2 class="section-title reveal">Turning positioning<br>into pipeline.</h2>
+  <p class="section-intro reveal">Every messaging framework, GTM launch, and competitive play I've run has been built around one principle: clarity creates conversion. Here's how that shows up across the full stack.</p>
+
+  <div class="cards-grid reveal">
+
+    <!-- CARD: GTM Strategy -->
+    <div class="card">
+      <div class="card-icon">🗺</div>
+      <div class="card-title">GTM Strategy & Execution</div>
+      <div class="card-body">Built and executed go-to-market strategies across B2B SaaS, professional services, and enterprise technology — from category creation to competitive repositioning. Fluent in ICP development, channel sequencing, and full-funnel campaign architecture.</div>
+      <div class="card-results">
+        <div class="result-item">Grew Frontline Selling pipeline from $0 to $7.3M in 90 days</div>
+        <div class="result-item">Led OfficeRnD expansion from 5 to 113 customers, 2× ASP growth</div>
+        <div class="result-item">Developed GTM for productized consulting IP at Booz Allen Hamilton</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD RESOURCES: Copy a badge + link below and update href and text -->
+        <!-- Example: <span class="resource-badge badge-pdf">PDF</span><a class="resource-link" href="path/to/file.pdf" target="_blank">GTM Playbook →</a> -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+    <!-- CARD: Messaging & Positioning -->
+    <div class="card">
+      <div class="card-icon">✍</div>
+      <div class="card-title">Messaging & Positioning</div>
+      <div class="card-body">Developed platform-wide messaging and positioning for procurement intelligence, workplace tech, mobile personalization, and microlearning — including full rebrands, competitive differentiation frameworks, and narrative-first sales scripts.</div>
+      <div class="card-results">
+        <div class="result-item">Concora: Matched full year's MQLs in 60 days post-rebrand</div>
+        <div class="result-item">SpendHQ: Messaging tied to 50% of Q1 2026 closed revenue</div>
+        <div class="result-item">Authored 3 white papers supporting thought leadership & demand gen</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD: Link to white papers, messaging frameworks, or decks here -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+    <!-- CARD: Product Launches -->
+    <div class="card">
+      <div class="card-icon">🚀</div>
+      <div class="card-title">Product Launches</div>
+      <div class="card-body">Led multi-product launches across Spend Intelligence, Performance Management, and Data Pipeline at SpendHQ — coordinating cross-functional alignment between product, sales, CS, and exec teams. Developed launch kits, release notes, internal education, and external positioning.</div>
+      <div class="card-results">
+        <div class="result-item">14 webinar and campaign launches executed at SpendHQ</div>
+        <div class="result-item">Two full Masterclass series (AI in Procurement; Supplier Risk)</div>
+        <div class="result-item">Created "Know Your Solutions" internal education series</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD: Launch kits, release decks, one-pagers here -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+    <!-- CARD: Sales Enablement -->
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Sales Enablement</div>
+      <div class="card-body">Built enablement systems that shorten ramp time and increase win rates — including battle cards, demo scripts, objection handling playbooks, and competitive intelligence frameworks. Trained sales and CS teams across the full platform at SpendHQ.</div>
+      <div class="card-results">
+        <div class="result-item">Frontline Selling: Win rate from 3% → 14%, ASP from $43K → $75K</div>
+        <div class="result-item">mLevel: Quota exceeded by 213% in first 120 days</div>
+        <div class="result-item">Infusionsoft: Revenue from $26M → $40M via new methodology</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD: Battle cards, playbooks, enablement decks here -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+    <!-- CARD: AI Enablement -->
+    <div class="card">
+      <div class="card-icon">🤖</div>
+      <div class="card-title">AI Enablement & MCP Agents</div>
+      <div class="card-body">Led company-wide AI enablement at SpendHQ, including the development of 8 AI agents using MCP connectors — establishing a category leadership position in applied procurement AI. Fluent in AI-powered GTM workflows, GEO, and LLM-assisted content production.</div>
+      <div class="card-results">
+        <div class="result-item">8 AI agents deployed using MCP connectors across GTM workflows</div>
+        <div class="result-item">Positioned SpendHQ as category leader in applied procurement AI</div>
+        <div class="result-item">GEO-optimized content strategy for AI search visibility</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD: AI agent demos, workflow diagrams, frameworks here -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+    <!-- CARD: Competitive Intelligence -->
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <div class="card-title">Competitive Intelligence</div>
+      <div class="card-body">Built competitive monitoring systems and CI frameworks that inform positioning, pricing strategy, and sales conversations. Created differentiation narratives that consistently move buyers off competitors during active evaluations.</div>
+      <div class="card-results">
+        <div class="result-item">Repositioned SpendHQ against competitive field in Spend Intelligence</div>
+        <div class="result-item">Supplier Risk Masterclass positioned ahead of key compliance trends</div>
+        <div class="result-item">CI frameworks used in direct sales calls and partner enablement</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD: Competitive battle cards, comparison sheets here -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CUSTOMER ENGAGEMENT -->
+<section id="customer-engagement">
+  <div class="section-label reveal">Customer Engagement</div>
+  <h2 class="section-title reveal">From acquisition<br>to advocacy.</h2>
+  <p class="section-intro reveal">Customer engagement isn't a post-sale afterthought — it's a revenue strategy. I build programs that reduce churn, increase adoption, and convert satisfied customers into active champions.</p>
+
+  <div class="cards-grid reveal">
+
+    <!-- CARD: Retention Programs -->
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <div class="card-title">Retention & Loyalty Programs</div>
+      <div class="card-body">Designed and executed engagement programs that keep customers active, expanding, and loyal. Built the Customer Connect Day series at SpendHQ from the ground up — an ongoing engagement touchpoint that directly tied to retention outcomes above 90%.</div>
+      <div class="card-results">
+        <div class="result-item">Customer Connect Day series: 90%+ retention, exceeding targets</div>
+        <div class="result-item">Infusionsoft: Improved attrition by 500%+ in Year 1</div>
+        <div class="result-item">Calendly: Intent campaign to reduce churn and improve seat usage</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD: Program overview decks, retention playbooks here -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+    <!-- CARD: Customer Newsletters -->
+    <div class="card">
+      <div class="card-icon">📧</div>
+      <div class="card-title">Customer Newsletters & Comms</div>
+      <div class="card-body">Write and produce the SpendHQ monthly Customer Newsletter — a cornerstone of ongoing engagement with content tailored to drive product adoption, awareness of new capabilities, and strategic value delivery to procurement leaders.</div>
+      <div class="card-results">
+        <div class="result-item">40%+ open rates — well above B2B SaaS industry benchmarks</div>
+        <div class="result-item">Consistent cadence drives feature adoption and NPS lift</div>
+        <div class="result-item">Newsletter directly tied to Customer Connect Day attendance growth</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD: Sample newsletter issues, open rate data here -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+    <!-- CARD: Event & Webinar Marketing -->
+    <div class="card">
+      <div class="card-icon">🎙</div>
+      <div class="card-title">Event & Webinar Marketing</div>
+      <div class="card-body">Produced and hosted 14+ webinar campaigns and virtual events — from awareness plays to deep-dive masterclasses — across Calendly, SpendHQ, and Plexure. Expert at turning a live audience into a pipeline generator and post-event nurture sequence.</div>
+      <div class="card-results">
+        <div class="result-item">Calendly Growth Week: 12,481 registrations and 2,180 MQLs</div>
+        <div class="result-item">Calendly: 125% MQL increase in 3 months from webinar programs</div>
+        <div class="result-item">Plexure: 314+ enterprise MQLs via virtual events and fireside chats</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD: Webinar recordings, registration pages, post-event data here -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+    <!-- CARD: ABM & Demand Gen -->
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">ABM & Demand Generation</div>
+      <div class="card-body">Built account-based marketing campaigns that target the right buyers with the right message at the right time. Skilled in intent data activation, LinkedIn ABM, and multi-touch nurture sequences that produce qualified pipeline — not just impressions.</div>
+      <div class="card-results">
+        <div class="result-item">Concora: 2,319 LinkedIn connections → 87 MQLs in one quarter</div>
+        <div class="result-item">mLevel: 40,000+ prospect list built from zero in 90 days</div>
+        <div class="result-item">Infusionsoft: $54M Goldman Sachs investment driven by growth methodology</div>
+      </div>
+      <div class="card-resources">
+        <!-- ADD: ABM playbooks, LinkedIn campaign examples here -->
+        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LOYALTY STRATEGY FRAMEWORK -->
+<section id="loyalty">
+  <div class="section-label reveal">Loyalty Strategy</div>
+  <h2 class="section-title reveal">The four pillars<br>of retention.</h2>
+  <p class="section-intro reveal">Loyalty isn't an accident — it's architected. Here's the framework I bring to every customer engagement program.</p>
+
+  <div class="loyalty-framework reveal">
+    <div>
+      <div class="loyalty-pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Structured Touchpoints</div>
+        <div class="pillar-body">Consistent engagement programs — newsletters, customer days, webinars — that keep your brand present and valuable long after onboarding. Customers who feel connected don't leave.</div>
+        <div class="pillar-metric">
+          <div class="metric-box">
+            <div class="metric-val">90<span>%+</span></div>
+            <div class="metric-label">Retention at SpendHQ</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">40<span>%+</span></div>
+            <div class="metric-label">Newsletter opens</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="loyalty-pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Value-Led Messaging</div>
+        <div class="pillar-body">Post-sale communication that continues to sell the vision — not just features. Every message answers: "What's in it for them today?" This is the connective tissue between product adoption and expansion revenue.</div>
+        <div class="pillar-metric">
+          <div class="metric-box">
+            <div class="metric-val">266<span>%</span></div>
+            <div class="metric-label">Content performance lift</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="loyalty-pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Internal Enablement</div>
+        <div class="pillar-body">CS and support teams are the first line of retention. Programs like SpendHQ's "Know Your Solutions" series build depth across the full platform, ensuring customers feel expert support at every interaction.</div>
+        <div class="pillar-metric">
+          <div class="metric-box">
+            <div class="metric-val">500<span>%+</span></div>
+            <div class="metric-label">Attrition reduction (Infusionsoft Y1)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="loyalty-pillar">
+        <div class="pillar-num">04</div>
+        <div class="pillar-title">Advocacy Architecture</div>
+        <div class="pillar-body">Great retention creates referrals. I build the proof points — case studies, video testimonials, Gartner relationships — that transform loyal customers into active growth levers for the business.</div>
+        <div class="pillar-metric">
+          <div class="metric-box">
+            <div class="metric-val">3</div>
+            <div class="metric-label">Enterprise deals from Gartner MQ inclusion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WEBINARS -->
+<section id="webinars" style="background: var(--bg2);">
+  <div class="section-label reveal">Featured Webinars</div>
+  <h2 class="section-title reveal">Live sessions &<br>on-demand events.</h2>
+  <p class="section-intro reveal">Programs I've hosted, produced, or contributed to. Click any to view the recording or registration page.</p>
+
+  <div class="webinar-list reveal">
+    <!-- WEBINAR ITEMS — ADD/EDIT/REMOVE as needed -->
+    <!-- Format: <a class="webinar-item" href="YOUR_LINK" target="_blank"> -->
+
+    <!-- EXAMPLE ENTRIES — Replace with your actual webinars -->
+    <a class="webinar-item" href="#" target="_blank">
+      <span class="webinar-date">2025</span>
+      <span class="webinar-title">AI in Procurement: Separating Signal from Hype — Masterclass Series</span>
+      <span class="webinar-org">SpendHQ</span>
+      <span class="webinar-arrow">↗</span>
+    </a>
+    <a class="webinar-item" href="#" target="_blank">
+      <span class="webinar-date">2025</span>
+      <span class="webinar-title">Supplier Risk in a Volatile World — Masterclass Series</span>
+      <span class="webinar-org">SpendHQ</span>
+      <span class="webinar-arrow">↗</span>
+    </a>
+    <a class="webinar-item" href="#" target="_blank">
+      <span class="webinar-date">2024</span>
+      <span class="webinar-title">Growth Week: Scaling Your Go-to-Market for Hypergrowth</span>
+      <span class="webinar-org">Calendly</span>
+      <span class="webinar-arrow">↗</span>
+    </a>
+    <a class="webinar-item" href="#" target="_blank">
+      <span class="webinar-date">2024</span>
+      <span class="webinar-title">Using Intent Data to Reduce Churn and Drive Seat Expansion</span>
+      <span class="webinar-org">Calendly</span>
+      <span class="webinar-arrow">↗</span>
+    </a>
+    <a class="webinar-item" href="#" target="_blank">
+      <span class="webinar-date">2020</span>
+      <span class="webinar-title">Personalization at Scale: Mobile Engagement for Enterprise Brands</span>
+      <span class="webinar-org">Plexure</span>
+      <span class="webinar-arrow">↗</span>
+    </a>
+
+    <!-- TO ADD A NEW WEBINAR, COPY THIS BLOCK AND UPDATE THE FIELDS:
+    <a class="webinar-item" href="YOUR_WEBINAR_URL" target="_blank">
+      <span class="webinar-date">YEAR</span>
+      <span class="webinar-title">WEBINAR TITLE HERE</span>
+      <span class="webinar-org">COMPANY / PLATFORM</span>
+      <span class="webinar-arrow">↗</span>
+    </a>
+    -->
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ENABLEMENT MATERIALS -->
+<!--
+  ========================================================
+  FOLDER STRUCTURE REFERENCE
+  ========================================================
+  assets/                   → resume PDF and misc files
+  assets/decks/             → slide decks (PPT/PDF of presentations)
+  assets/webinars/          → webinar recordings or thumbnail images
+  assets/enablement/        → sales & CS enablement materials
+                              (battle cards, playbooks, one-pagers, frameworks)
+
+  PATH EXAMPLES BY TYPE:
+    Resume PDF:             assets/resume.pdf
+    Slide deck:             assets/decks/your-deck-name.pdf
+    Webinar recording:      assets/webinars/your-webinar.mp4  (or external URL)
+    Enablement material:    assets/enablement/your-material.pdf
+    External link:          https://full-url-here.com
+
+  BADGE TYPES:
+    <span class="resource-badge badge-pdf">PDF</span>       → white papers, one-pagers
+    <span class="resource-badge badge-ppt">DECK</span>      → slide presentations
+    <span class="resource-badge badge-video">VIDEO</span>   → recordings
+    <span class="resource-badge badge-link">LINK</span>     → external URLs
+    <span class="resource-badge badge-enable">ENABLE</span> → sales/CS enablement assets
+  ========================================================
+-->
+<section id="materials">
+  <div class="section-label reveal">Enablement Materials</div>
+  <h2 class="section-title reveal">Resources, playbooks<br>&amp; proof points.</h2>
+  <p class="section-intro reveal">Downloadable materials from across my career — white papers, slide decks, frameworks, and sales enablement assets. The tangible outputs of strategic marketing work.</p>
+
+  <!-- ── THOUGHT LEADERSHIP & WHITE PAPERS ── -->
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--text-muted);margin-bottom:1rem;" class="reveal">Thought leadership &amp; white papers</h3>
+  <div class="materials-grid reveal" style="margin-bottom:3rem;">
+
+    <!-- Path: assets/enablement/lifecycle-marketing-methodology.pdf -->
+    <a class="material-card" href="assets/enablement/lifecycle-marketing-methodology.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-pdf">PDF</span></span>
+      <span class="material-name">Lifecycle Marketing Methodology — Infusionsoft</span>
+      <span class="material-desc">The framework behind $26M → $40M revenue growth and a $54M Goldman Sachs investment.</span>
+      <span class="material-cta">Download →</span>
+    </a>
+
+    <!-- Path: assets/enablement/ai-in-procurement-white-paper.pdf -->
+    <a class="material-card" href="assets/enablement/ai-in-procurement-white-paper.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-pdf">PDF</span></span>
+      <span class="material-name">AI in Procurement White Paper</span>
+      <span class="material-desc">Thought leadership piece establishing SpendHQ as a category leader in applied procurement AI.</span>
+      <span class="material-cta">Download →</span>
+    </a>
+
+    <!-- Path: assets/enablement/supplier-risk-white-paper.pdf -->
+    <a class="material-card" href="assets/enablement/supplier-risk-white-paper.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-pdf">PDF</span></span>
+      <span class="material-name">Supplier Risk Management White Paper</span>
+      <span class="material-desc">Supporting thought leadership and competitive differentiation in procurement compliance.</span>
+      <span class="material-cta">Download →</span>
+    </a>
+
+    <!-- ADD WHITE PAPER:
+    <a class="material-card" href="assets/enablement/YOUR-FILE.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-pdf">PDF</span></span>
+      <span class="material-name">TITLE</span>
+      <span class="material-desc">DESCRIPTION</span>
+      <span class="material-cta">Download →</span>
+    </a>
+    -->
+
+  </div>
+
+  <!-- ── DECKS & PRESENTATIONS ── -->
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--text-muted);margin-bottom:1rem;" class="reveal">Decks &amp; presentations</h3>
+  <div class="materials-grid reveal" style="margin-bottom:3rem;">
+
+    <!-- Path: assets/decks/spendhq-platform-messaging.pdf -->
+    <a class="material-card" href="assets/decks/spendhq-platform-messaging.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-ppt">DECK</span></span>
+      <span class="material-name">SpendHQ Platform Messaging Overview</span>
+      <span class="material-desc">Positioning across Spend Intelligence, Performance Management, and Data Pipeline.</span>
+      <span class="material-cta">View Deck →</span>
+    </a>
+
+    <!-- Path: assets/decks/customer-connect-day.pdf -->
+    <a class="material-card" href="assets/decks/customer-connect-day.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-ppt">DECK</span></span>
+      <span class="material-name">Customer Connect Day — Program Overview</span>
+      <span class="material-desc">The engagement series that drove 90%+ customer retention at SpendHQ.</span>
+      <span class="material-cta">View Deck →</span>
+    </a>
+
+    <!-- ADD DECK:
+    <a class="material-card" href="assets/decks/YOUR-FILE.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-ppt">DECK</span></span>
+      <span class="material-name">TITLE</span>
+      <span class="material-desc">DESCRIPTION</span>
+      <span class="material-cta">View Deck →</span>
+    </a>
+    -->
+
+  </div>
+
+  <!-- ── SALES & CS ENABLEMENT ── -->
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--text-muted);margin-bottom:1rem;" class="reveal">Sales &amp; CS enablement</h3>
+  <div class="materials-grid reveal">
+
+    <!-- Path: assets/enablement/gtm-playbook-b2b-saas.pdf -->
+    <a class="material-card" href="assets/enablement/gtm-playbook-b2b-saas.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-enable">ENABLE</span></span>
+      <span class="material-name">GTM Playbook: B2B SaaS Repositioning</span>
+      <span class="material-desc">The messaging and ICP frameworks used to scale OfficeRnD from 5 to 113 customers.</span>
+      <span class="material-cta">Download →</span>
+    </a>
+
+    <!-- Path: assets/enablement/know-your-solutions.pdf -->
+    <a class="material-card" href="assets/enablement/know-your-solutions.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-enable">ENABLE</span></span>
+      <span class="material-name">Know Your Solutions — Internal Series</span>
+      <span class="material-desc">Product education series for SpendHQ sales and CS teams across the full platform.</span>
+      <span class="material-cta">Download →</span>
+    </a>
+
+    <!-- Path: assets/enablement/training-planner.pdf  (or external link) -->
+    <a class="material-card" href="assets/enablement/training-planner.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-enable">ENABLE</span></span>
+      <span class="material-name">Training Planner Lead Gen Asset — mLevel</span>
+      <span class="material-desc">The asset that generated 362 enterprise MQLs in under 30 days.</span>
+      <span class="material-cta">Download →</span>
+    </a>
+
+    <!-- ADD ENABLEMENT ASSET:
+    <a class="material-card" href="assets/enablement/YOUR-FILE.pdf" target="_blank">
+      <span class="material-type"><span class="resource-badge badge-enable">ENABLE</span></span>
+      <span class="material-name">TITLE</span>
+      <span class="material-desc">DESCRIPTION</span>
+      <span class="material-cta">Download →</span>
+    </a>
+    -->
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-name">Colin Daymude</div>
+    <div class="footer-contact">
+      Chattahoochee Hills, GA<br>
+      404-392-6970<br>
+      colindaymude@gmail.com
+    </div>
+  </div>
+  <div class="footer-links">
+    <!-- UPDATE: replace # with your LinkedIn URL -->
+    <a class="footer-link" href="https://www.linkedin.com/in/colindaymude/" target="_blank">LinkedIn ↗</a>
+    <a class="footer-link" href="#product-marketing">Product Marketing</a>
+    <a class="footer-link" href="#customer-engagement">Customer Engagement</a>
+    <a class="footer-link" href="#webinars">Webinars</a>
+    <a class="footer-link" href="#materials">Materials</a>
+  </div>
+  <div class="footer-bottom" style="width:100%;">
+    Product Marketing & Customer Engagement  •  Full Stack Marketer  •  Ironman Triathlete  •  Author  •  Father of 2
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
