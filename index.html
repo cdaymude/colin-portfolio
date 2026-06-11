@@ -362,6 +362,26 @@
     .footer { flex-direction: column; }
     .footer-links { align-items: flex-start; }
   }
+
+  /* COMING SOON STATES */
+  .coming-soon {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 4px 10px; border: 0.5px dashed var(--border-subtle); border-radius: 2px;
+  }
+  .coming-soon::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--gold); opacity: 0.65;
+  }
+  .material-card.is-soon, .webinar-item.is-soon { cursor: default; opacity: 0.78; }
+  .material-card.is-soon:hover { background: var(--bg2); }
+  .webinar-item.is-soon:hover { background: var(--bg2); }
+  .material-cta.is-soon { color: var(--text-dim); }
+  .webinar-soon {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-dim);
+  }
 </style>
 </head>
 <body>
@@ -441,7 +461,7 @@
       <div class="card-resources">
         <!-- ADD RESOURCES: Copy a badge + link below and update href and text -->
         <!-- Example: <span class="resource-badge badge-pdf">PDF</span><a class="resource-link" href="path/to/file.pdf" target="_blank">GTM Playbook →</a> -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -457,7 +477,7 @@
       </div>
       <div class="card-resources">
         <!-- ADD: Link to white papers, messaging frameworks, or decks here -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -473,7 +493,7 @@
       </div>
       <div class="card-resources">
         <!-- ADD: Launch kits, release decks, one-pagers here -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -489,7 +509,7 @@
       </div>
       <div class="card-resources">
         <!-- ADD: Battle cards, playbooks, enablement decks here -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -505,7 +525,7 @@
       </div>
       <div class="card-resources">
         <!-- ADD: AI agent demos, workflow diagrams, frameworks here -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -521,7 +541,7 @@
       </div>
       <div class="card-resources">
         <!-- ADD: Competitive battle cards, comparison sheets here -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -550,7 +570,7 @@
       </div>
       <div class="card-resources">
         <!-- ADD: Program overview decks, retention playbooks here -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -566,7 +586,7 @@
       </div>
       <div class="card-resources">
         <!-- ADD: Sample newsletter issues, open rate data here -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -582,7 +602,7 @@
       </div>
       <div class="card-resources">
         <!-- ADD: Webinar recordings, registration pages, post-event data here -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -598,7 +618,7 @@
       </div>
       <div class="card-resources">
         <!-- ADD: ABM playbooks, LinkedIn campaign examples here -->
-        <span style="font-size:12px;color:var(--text-dim);">Add resources below ↓</span>
+        <span class="coming-soon">Resources coming soon</span>
       </div>
     </div>
 
@@ -686,36 +706,36 @@
     <!-- Format: <a class="webinar-item" href="YOUR_LINK" target="_blank"> -->
 
     <!-- EXAMPLE ENTRIES — Replace with your actual webinars -->
-    <a class="webinar-item" href="#" target="_blank">
+    <div class="webinar-item is-soon">
       <span class="webinar-date">2025</span>
       <span class="webinar-title">AI in Procurement: Separating Signal from Hype — Masterclass Series</span>
       <span class="webinar-org">SpendHQ</span>
-      <span class="webinar-arrow">↗</span>
-    </a>
-    <a class="webinar-item" href="#" target="_blank">
+      <span class="webinar-soon">Coming soon</span>
+    </div>
+    <div class="webinar-item is-soon">
       <span class="webinar-date">2025</span>
       <span class="webinar-title">Supplier Risk in a Volatile World — Masterclass Series</span>
       <span class="webinar-org">SpendHQ</span>
-      <span class="webinar-arrow">↗</span>
-    </a>
-    <a class="webinar-item" href="#" target="_blank">
+      <span class="webinar-soon">Coming soon</span>
+    </div>
+    <div class="webinar-item is-soon">
       <span class="webinar-date">2024</span>
       <span class="webinar-title">Growth Week: Scaling Your Go-to-Market for Hypergrowth</span>
       <span class="webinar-org">Calendly</span>
-      <span class="webinar-arrow">↗</span>
-    </a>
-    <a class="webinar-item" href="#" target="_blank">
+      <span class="webinar-soon">Coming soon</span>
+    </div>
+    <div class="webinar-item is-soon">
       <span class="webinar-date">2024</span>
       <span class="webinar-title">Using Intent Data to Reduce Churn and Drive Seat Expansion</span>
       <span class="webinar-org">Calendly</span>
-      <span class="webinar-arrow">↗</span>
-    </a>
-    <a class="webinar-item" href="#" target="_blank">
+      <span class="webinar-soon">Coming soon</span>
+    </div>
+    <div class="webinar-item is-soon">
       <span class="webinar-date">2020</span>
       <span class="webinar-title">Personalization at Scale: Mobile Engagement for Enterprise Brands</span>
       <span class="webinar-org">Plexure</span>
-      <span class="webinar-arrow">↗</span>
-    </a>
+      <span class="webinar-soon">Coming soon</span>
+    </div>
 
     <!-- TO ADD A NEW WEBINAR, COPY THIS BLOCK AND UPDATE THE FIELDS:
     <a class="webinar-item" href="YOUR_WEBINAR_URL" target="_blank">
@@ -766,36 +786,36 @@
   <div class="materials-grid reveal" style="margin-bottom:3rem;">
 
     <!-- Path: assets/enablement/lifecycle-marketing-methodology.pdf -->
-    <a class="material-card" href="assets/enablement/lifecycle-marketing-methodology.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-pdf">PDF</span></span>
       <span class="material-name">Lifecycle Marketing Methodology — Infusionsoft</span>
       <span class="material-desc">The framework behind $26M → $40M revenue growth and a $54M Goldman Sachs investment.</span>
-      <span class="material-cta">Download →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
 
     <!-- Path: assets/enablement/ai-in-procurement-white-paper.pdf -->
-    <a class="material-card" href="assets/enablement/ai-in-procurement-white-paper.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-pdf">PDF</span></span>
       <span class="material-name">AI in Procurement White Paper</span>
       <span class="material-desc">Thought leadership piece establishing SpendHQ as a category leader in applied procurement AI.</span>
-      <span class="material-cta">Download →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
 
     <!-- Path: assets/enablement/supplier-risk-white-paper.pdf -->
-    <a class="material-card" href="assets/enablement/supplier-risk-white-paper.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-pdf">PDF</span></span>
       <span class="material-name">Supplier Risk Management White Paper</span>
       <span class="material-desc">Supporting thought leadership and competitive differentiation in procurement compliance.</span>
-      <span class="material-cta">Download →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
 
     <!-- ADD WHITE PAPER:
-    <a class="material-card" href="assets/enablement/YOUR-FILE.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-pdf">PDF</span></span>
       <span class="material-name">TITLE</span>
       <span class="material-desc">DESCRIPTION</span>
-      <span class="material-cta">Download →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
     -->
 
   </div>
@@ -805,28 +825,28 @@
   <div class="materials-grid reveal" style="margin-bottom:3rem;">
 
     <!-- Path: assets/decks/spendhq-platform-messaging.pdf -->
-    <a class="material-card" href="assets/decks/spendhq-platform-messaging.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-ppt">DECK</span></span>
       <span class="material-name">SpendHQ Platform Messaging Overview</span>
       <span class="material-desc">Positioning across Spend Intelligence, Performance Management, and Data Pipeline.</span>
-      <span class="material-cta">View Deck →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
 
     <!-- Path: assets/decks/customer-connect-day.pdf -->
-    <a class="material-card" href="assets/decks/customer-connect-day.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-ppt">DECK</span></span>
       <span class="material-name">Customer Connect Day — Program Overview</span>
       <span class="material-desc">The engagement series that drove 90%+ customer retention at SpendHQ.</span>
-      <span class="material-cta">View Deck →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
 
     <!-- ADD DECK:
-    <a class="material-card" href="assets/decks/YOUR-FILE.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-ppt">DECK</span></span>
       <span class="material-name">TITLE</span>
       <span class="material-desc">DESCRIPTION</span>
-      <span class="material-cta">View Deck →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
     -->
 
   </div>
@@ -836,36 +856,36 @@
   <div class="materials-grid reveal">
 
     <!-- Path: assets/enablement/gtm-playbook-b2b-saas.pdf -->
-    <a class="material-card" href="assets/enablement/gtm-playbook-b2b-saas.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-enable">ENABLE</span></span>
       <span class="material-name">GTM Playbook: B2B SaaS Repositioning</span>
       <span class="material-desc">The messaging and ICP frameworks used to scale OfficeRnD from 5 to 113 customers.</span>
-      <span class="material-cta">Download →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
 
     <!-- Path: assets/enablement/know-your-solutions.pdf -->
-    <a class="material-card" href="assets/enablement/know-your-solutions.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-enable">ENABLE</span></span>
       <span class="material-name">Know Your Solutions — Internal Series</span>
       <span class="material-desc">Product education series for SpendHQ sales and CS teams across the full platform.</span>
-      <span class="material-cta">Download →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
 
     <!-- Path: assets/enablement/training-planner.pdf  (or external link) -->
-    <a class="material-card" href="assets/enablement/training-planner.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-enable">ENABLE</span></span>
       <span class="material-name">Training Planner Lead Gen Asset — mLevel</span>
       <span class="material-desc">The asset that generated 362 enterprise MQLs in under 30 days.</span>
-      <span class="material-cta">Download →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
 
     <!-- ADD ENABLEMENT ASSET:
-    <a class="material-card" href="assets/enablement/YOUR-FILE.pdf" target="_blank">
+    <div class="material-card is-soon">
       <span class="material-type"><span class="resource-badge badge-enable">ENABLE</span></span>
       <span class="material-name">TITLE</span>
       <span class="material-desc">DESCRIPTION</span>
-      <span class="material-cta">Download →</span>
-    </a>
+      <span class="material-cta is-soon">Coming soon</span>
+    </div>
     -->
 
   </div>
